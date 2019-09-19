@@ -1,0 +1,18 @@
+@font-face {
+	font-family: "popjoy";
+	src: url("FOT-PopJoyStd-B.otf");
+}
+div {
+	font-family: 'popjoy';
+	color: cyan;
+}
+#baseBar {
+	width: 100%;
+	background-color: magenta;
+}
+#inBar {
+	width: 30%;
+	height: 32px;
+	background-color: yellow;
+	font-size: 16px;
+}
