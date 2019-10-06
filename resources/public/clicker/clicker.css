@@ -1,0 +1,92 @@
+@font-face {
+	font-family: "popjoy";
+	src: url("FOT-PopJoyStd-B.otf");
+}
+html, body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	font-family: 'popjoy';
+	color: cyan;
+	-webkit-user-select: none;
+	-ms-user-select:none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+body {
+	background-image: url("flag.gif");
+}
+#baseBar {
+	width: 75%;
+	height: 100%;
+	background-color: grey;
+	float: left;
+}
+#inBar {
+	width: 50%;
+	max-width: 100%;
+	height: 100%;
+	background-color: yellow;
+	font-size: 16px;
+}
+#content{
+	height: 50%;
+	width: 100%;
+}
+.center{
+	display: block;
+	margin: auto;
+}
+.vcenter{
+	vertical-align: middle;
+}
+#currentClicks, #goalClicks{
+	width: 30%;
+}
+#currentClicks{
+	text-align: right;
+}
+#bar{
+	width: 100%;
+	height: 25%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#button{
+	height: 50%;
+}
+#userClicks{
+	width: 100%;
+	text-align: center;
+}
+
+#inBar.g1{
+	background-color: cyan;
+}
+#inBar.g2{
+	background-color: green;
+}
+#inBar.g3{
+	background-color: blue;
+}
+#inBar.g4{
+	background-color: magenta;
+}
+#inBar.g5{
+	background-color: red;
+}
+#inBar.g6{
+	background-color: cyan;
+}
+#inBar.g7{
+	background-color: cyan;
+}
+#inBar.g8{
+	background-color: cyan;
+}
+
