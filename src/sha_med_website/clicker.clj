@@ -11,14 +11,14 @@
      [:title "Tetra Clicker 2"]
      [:meta {:name "viewport"
              :content "width=device-width, height=device-height, initial-scale=1,0"}]
-     (include-css "clicker/clicker.css")
-     (include-js "clicker/clicker.js")]
+     (include-css "clicker.css")
+     (include-js "clicker.js")]
     [:link {:rel "shortcut icon" :type "image/png" :href "favicon.png"}]
     [:body {:ondragstart "return false" :ondrop "return false"}
-     [:audio {:loop "" :autoplay "" :src "clicker/smwbonus.mp3"}]
+     [:audio {:loop "" :autoplay "" :src "smwbonus.mp3"}]
      [:div#content
       [:div#ccontent
-      [:img#button.center {:alt "" :draggable "false" :onmousedown "return false" :src "clicker/button.png" :onclick (str "doClick();")}]
+      [:img#button.center {:alt "" :draggable "false" :onmousedown "return false" :src "button.png" :onclick (str "doClick();")}]
       [:div#bar
        [:div#currentClicks]
        [:div#baseBar
