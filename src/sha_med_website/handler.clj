@@ -2,43 +2,34 @@
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+            [ring.middleware.session :refer [wrap-session]]
+            [jumblerg.middleware.cors :refer [wrap-cors]]
             [ring.util.response :as resp]
-            [sha-med-website.index :as home]
-            [sha-med-website.clicker.core :as clicker]))
-
-(def modules ['clicker])
-
-(defn dalias
-  [name]
-  (get (ns-aliases *ns*) name))
-
-(def modules-ns
-  (map dalias modules))
-
-(def default-routes
-  [(GET "/" [] (home/index modules))
-   (route/not-found "Not Found")])
+            [ring.middleware.x-headers :as xheaders]
+            [sha-med-website.clicker :as clicker]))
 
 (defn fresponse
   [fname]
   (resp/content-type (resp/resource-response fname {:root "public"}) "text/html")) 
 
-(defn modules-fn
-  [f mods]
-  (dorun (map #((ns-resolve % f)) mods))) ;swap to doall and combine w/ routes
-
-(defn mod-routes
-  [mods]
-  (apply concat (map #(var-get (ns-resolve % 'routes_)) mods)))
-
-(defn app-routes 
-  [mods]
-  (apply routes (concat (mod-routes modules-ns) default-routes)))
-
 (defn init
   []
-  (in-ns 'sha-med-website.handler)
-  (modules-fn 'init modules-ns))
+  (clicker/init))
+
+(defroutes app-routes
+  (GET "/" request (clicker/index request))
+  (GET "/click" [] (clicker/click-get))
+  (POST "/click" request (clicker/click-post request))
+  (route/not-found "not found"))
 
 (def app
-  (wrap-defaults (app-routes modules-ns) site-defaults))
+  (-> app-routes
+      ;(wrap-cors :access-control-allow-headers [:get :post :put :delete])
+      (wrap-defaults 
+        (assoc-in
+          (assoc-in
+            (assoc-in site-defaults
+                      [:security :frame-options] {:allow-from "https://shamedic.com"})
+            [:security :anti-forgery] false)
+          [:session] false))))
+;[:] dissoc :same-site)))) ;gross but now needs to work in iframe

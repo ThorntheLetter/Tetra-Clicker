@@ -2,6 +2,10 @@
 	font-family: "popjoy";
 	src: url("FOT-PopJoyStd-B.otf");
 }
+@font-face {
+	font-family: "notomono";
+	src: url("NotoMono-Regular.ttf");
+}
 html, body {
 	display: flex;
 	justify-content: center;
@@ -10,7 +14,9 @@ html, body {
 	width: 100%;
 	margin: 0;
 	font-family: 'popjoy';
-	color: cyan;
+	font-size: 125%;
+	color: #00dede;
+	text-shadow: 1px 1px #212121, 1px -1px #212121, -1px -1px #212121, -1px 1px #212121;
 	-webkit-user-select: none;
 	-ms-user-select:none;
 	-moz-user-select: none;
@@ -18,12 +24,14 @@ html, body {
 }
 
 body {
-	background-image: url("flag.gif");
+	background: url("background.png") no-repeat center center fixed;
+	background-size: cover;
 }
 #baseBar {
-	width: 75%;
+	width: 100%;
 	height: 100%;
 	background-color: grey;
+	border-radius: 15px;
 	float: left;
 }
 #inBar {
@@ -31,11 +39,23 @@ body {
 	max-width: 100%;
 	height: 100%;
 	background-color: yellow;
-	font-size: 16px;
+	border-radius: 10px;
 }
 #content{
-	height: 50%;
+	background: rgba(21,21,21,.33);
+	border-radius: 50px;
+	height: 66%;
+	width: 50%;
+	padding: 1%;
+	min-height: 240px;
+}
+#ccontent{
+	height: 100%;
 	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 .center{
 	display: block;
@@ -45,7 +65,7 @@ body {
 	vertical-align: middle;
 }
 #currentClicks, #goalClicks{
-	width: 30%;
+	width: 20%;
 }
 #currentClicks{
 	text-align: right;
@@ -59,6 +79,19 @@ body {
 }
 #button{
 	height: 50%;
+	padding: 5px;
+	animation-name: idle;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+@keyframes idle{
+	0%, 100% {
+		transform: rotate(-10deg);
+	}
+	50% {
+		transform: rotate(10deg);
+	}
 }
 #userClicks{
 	width: 100%;
@@ -68,6 +101,7 @@ body {
 #inBar.g1{
 	background-color: cyan;
 }
+	
 #inBar.g2{
 	background-color: green;
 }
