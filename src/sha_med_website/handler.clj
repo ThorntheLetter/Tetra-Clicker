@@ -2,8 +2,8 @@
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
-            [ring.middleware.session :refer [wrap-session]]
-            [jumblerg.middleware.cors :refer [wrap-cors]]
+            ;[ring.middleware.session :refer [wrap-session]]
+            ;[jumblerg.middleware.cors :refer [wrap-cors]]
             [ring.util.response :as resp]
             [ring.middleware.x-headers :as xheaders]
             [sha-med-website.clicker :as clicker]))
